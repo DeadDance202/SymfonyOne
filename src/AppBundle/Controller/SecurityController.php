@@ -28,7 +28,7 @@ public function loginAction(Request $request)
     // last username entered by the user
     $lastUsername = $authenticationUtils->getLastUsername();
 
-    return $this->render('AppBundle:registration:register.html.twig', array(
+    return $this->render('AppBundle:security:Login.html.twig', array(
         'last_username' => $lastUsername,
         'error'         => $error,
     ));
