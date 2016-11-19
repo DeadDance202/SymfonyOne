@@ -3,10 +3,13 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            <div id="welcome">
-                <h2><span>Welcome {#<h3> {{ app.user  }}</h3>#}</span> </h2>
+            <div class="row">
+                <div class="col-md-8">.col-md-8</div>
+                <div class="col-md-4">.col-md-4</div>
+                <div id="welcome">
+                    <h2><span>Welcome {#<h3> {{ app.user  }}</h3>#}</span> </h2>
+                </div>
             </div>
-
         </div>
     </div>
 {% endblock %}
