@@ -5,33 +5,35 @@
         <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge" >
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/bootstrap-flatly-3.3.7.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/font-awesome-4.6.3.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/font-lato.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/highlight-solarized-light.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-        {% endblock %}
+        {% block stylesheets %}{% endblock %}
+
+        {% stylesheets
+        'css/bootstrap.css'
+        'css/style.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">.col-md-8</div>
-            <div class="col-md-4">.col-md-4</div>
-        </div>
-    </div>
-        {% block body %}
-             {% block main %}{% endblock %}
+    {% block main %}
+            {% block body %}
+
+                 {% block login %}{% endblock %}
+             {% endblock %}
         {% endblock %}
-        {% block javascripts %}
-            <script src="{{ asset('js/jquery-2.2.4.min.js') }}"></script>
-            <script src="{{ asset('js/moment.min.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-3.3.7.min.js') }}"></script>
-            <script src="{{ asset('js/highlight.pack.js') }}"></script>
-            <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
-            <script src="{{ asset('js/main.js') }}"></script>
-        {% endblock %}
+        {% block javascripts %}{% endblock %}
+
+    {% javascripts
+    'js/jquery-2.2.4.min.js'
+    'js/bootstrap-3.3.7.min.js'
+    'js/moment.min.js'
+    'js/highlight.pack.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
     </body>
 </html>

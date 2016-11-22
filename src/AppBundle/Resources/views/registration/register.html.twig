@@ -1,8 +1,26 @@
-{{ form_start(form) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.plainPassword.first) }}
-    {{ form_row(form.plainPassword.second) }}
 
-<button type="submit">Register!</button>
-{{ form_end(form) }}
+
+
+{% extends 'base.html.twig' %}
+        {% block login %}
+
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <div class="loginform">
+
+                        {{ form_start(form) }}
+                        {{ form_row(form.username) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.plainPassword.first) }}
+                        {{ form_row(form.plainPassword.second) }}
+                        <div class="buttonForm">
+                            <button class="btn btn-warning" type="submit">Register!</button>
+                        </div>
+                        {{ form_end(form) }}
+                </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+
+        {% endblock %}
