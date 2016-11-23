@@ -59,6 +59,9 @@ class User implements UserInterface, \Serializable
      */
     private $plainPassword;
 
+
+
+
     public function __construct()
     {
         $this->isActive = true;

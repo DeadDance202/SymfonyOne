@@ -60,7 +60,7 @@ code {
 	}
 #welcome, #status { 
 	margin-bottom: 2em; 
-	background: #66dd66; 
+
 	}
 #welcome h1 span { 
 	display: block; 
@@ -71,4 +71,7 @@ code {
 }
 html{
 	background: #F5F5F5;
+}
+#colorLogUser{
+	color: #0000F0;
 }
