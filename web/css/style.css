@@ -12,8 +12,8 @@
     border-radius:5px;
     background: #66dd66;
 	}
-.row div {
-	
+.row  {
+
 }
 body { 
 	 font: 18px/1.5 sans-serif;
@@ -56,7 +56,7 @@ code {
 	width: 85%; 
 	}
 #container { 
-	padding: 2em; 
+
 	}
 #welcome, #status { 
 	margin-bottom: 2em; 

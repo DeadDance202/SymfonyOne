@@ -1,36 +1,61 @@
 {% extends 'base.html.twig' %}
   {% block main %}
-      {% block body %}
+
             <div id="wrapper">
-                <div id="container">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div id="welcome">
-                                <h2><span>Welcome
-                                         <div id="colorLogUser">
-                                        {{ app.user.username }}
-                                             </div>
-                                    </span> </h2>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                        </div>
-                        <div class="col-md-3">
-                            <p>
-                                <a class="btn btn-primary btn-sm" href="{{ path('login') }}">
-                                    <i class="fa fa-users" aria-hidden="true">Login here</i>
-                                </a>
-                                <a class="btn btn-primary btn-sm" href="{{ path('register') }}">
-                                    <i class="fa fa-users" aria-hidden="true">Registration</i>
-                                </a>
-                            </p>
+                <div class="container">
+                        <div class="row">
+                        <br>
+                            <br>
+                            <br>
+                            <div class="col-md-12">
+                                <div id="carousel" class="carousel slider">
+                                   <ol class="carousel-indicators">
+                                       <li class="active" data-target="#carousel" data-slide="0"></li>
+                                       <li data-target="#carousel" data-slide="1"></li>
+                                       <li data-target="#carousel" data-slide="2"></li>
+                                </ol>
+                                    <!--slides -->
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <img src="images/{{ asset('images/2.png') }}" alt="">
+                                            <div class="carousel-caption">
+                                                <h3>First slide</h3>
+                                                <p>meta</p>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <img src="images/{{ asset('images/3.jpg') }}" alt="">
+                                            <div class="carousel-caption">
+                                                <h3>Second slide</h3>
+                                                <p>meta</p>
+                                            </div>
 
+                                        </div>
+                                        <div class="item">
+                                            <img src="images/{{ asset('images/4.jpg') }}" alt="">
+                                            <div class="carousel-caption">
+                                                <h3>Third slide</h3>
+                                                <p>meta</p>
+                                            </div>
 
-                        </div>
-                    </div>
+                                        </div>
+                                    </div>
+
+                                    <a href="#carousel" class="left carousel-control" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                    </a>
+                                    <a href="#carousel" class="right carousel-control" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </a>
+                                </div>
+
                 </div>
             </div>
+
+
+
+
   {% endblock %}
-    {% endblock %}
+
 
 

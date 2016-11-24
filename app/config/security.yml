@@ -31,13 +31,16 @@ security:
                 login_path: login
                 check_path: login
             provider: our_db_provider
+            logout:
+                            path:   /logout
+                            target: /
 
     access_control:
             # require ROLE_ADMIN for /admin*
 
-            - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-            - { path: ^/, roles: ROLE_USER }
-            - { path: ^/, roles: ROLE_ADMIN }
+            - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY,}
+            - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+            - { path: ^/registration, roles: IS_AUTHENTICATED_ANONYMOUSLY,}
 
     encoders:
             AppBundle\Entity\User:

@@ -59,7 +59,20 @@ class User implements UserInterface, \Serializable
      */
     private $plainPassword;
 
+    /**
+     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=100)
+     */
+    private $role = 'ROLE_USER';
 
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+    public function getRoles()
+    {
+        return array($this->role);
+    }
 
 
     public function __construct()
@@ -86,10 +99,7 @@ class User implements UserInterface, \Serializable
         return $this->password;
     }
 
-    public function getRoles()
-    {
-        return array('ROLE_USER');
-    }
+
 
     public function eraseCredentials()
     {

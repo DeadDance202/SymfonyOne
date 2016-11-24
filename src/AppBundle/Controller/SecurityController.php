@@ -34,4 +34,11 @@ public function loginAction(Request $request)
         'error'         => $error,
     ));
 }
+/**
+ * @Route("/logout", name="security_logout")
+ */
+    public function logoutAction()
+    {
+        throw new \Exception('This should never be reached!');
+    }
 }
