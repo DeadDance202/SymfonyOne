@@ -6,18 +6,15 @@
 	}
 .loginform {
 	margin:50px;
-    padding:30px;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
-    background: #66dd66;
+    padding:40px;
+
 	}
 .row  {
 
 }
 body { 
 	 font: 18px/1.5 sans-serif;
-	background: #F5F5F5;
+	background: #c9c9c9;
 	}
 h1, h2, h3 { 
 	line-height: 1.2; margin: 0 0 .5em; 
@@ -45,13 +42,13 @@ input {
 	width: auto;
 	}
 code { 
-	background: #F5F5F5; 
+	background: #F5F5F5;
 	max-width: 100px; 
 	padding: 2px 6px; 
 	word-wrap: break-word; 
 	}
 #wrapper {
-	background: #F5F5F5;
+	background: #d5d5d5;
 	margin: 1em auto;  
 	width: 85%; 
 	}
@@ -69,9 +66,7 @@ code {
 .buttonForm{
 	margin-top:10px;
 }
-html{
-	background: #F5F5F5;
-}
+
 #colorLogUser{
 	color: #0000F0;
 }

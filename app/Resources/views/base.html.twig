@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge" >
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>{% block title %}Smartphone Homepage{% endblock %}</title>
+        <title>{% block title %}GuitarLand Homepage{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
 
         {% stylesheets
@@ -18,10 +18,11 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    {% block main %}
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ path('blog_homepage') }}">Smartphone</a>
+                <a class="navbar-brand" href="{{ path('blog_homepage') }}">GuitarLand</a>
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
@@ -37,12 +38,26 @@
             </ul>
         </div>
     </nav>
-    {% block main %}
+    {% endblock %}
             {% block body %}
+                <div id="wrapper">
+                    {% block login %}{% endblock %}
+                </div>
 
-                 {% block login %}{% endblock %}
+
              {% endblock %}
-        {% endblock %}
+{% if is_granted('ROLE_USER') %}
+    {% block footer %}
+        <nav class="navbar navbar-default navbar">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                </ul>
+
+            </div>
+        </nav>
+    {% endblock %}
+{% endif %}
         {% block javascripts %}{% endblock %}
 
     {% javascripts
