@@ -1,14 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Misha Savitckiy
- * Date: 25.11.16
- * Time: 05:31
- */
+
 namespace BlogBundle\Form;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 class CategoryType extends AbstractType
 {
     /**
@@ -16,8 +13,9 @@ class CategoryType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('isActive')->add('parent')        ;
+        $builder->add('name')->add('isActive')        ;
     }
+    
     /**
      * {@inheritdoc}
      */
@@ -27,6 +25,7 @@ class CategoryType extends AbstractType
             'data_class' => 'BlogBundle\Entity\Category'
         ));
     }
+
     /**
      * {@inheritdoc}
      */
@@ -34,4 +33,6 @@ class CategoryType extends AbstractType
     {
         return 'blogbundle_category';
     }
+
+
 }

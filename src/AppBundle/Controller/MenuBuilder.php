@@ -28,7 +28,7 @@ class MenuBuilder
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttributes(array('class' => 'nav'));
         $menu->addChild('Home', array('route' => 'blog_homepage'));
-        $menu->addChild('Categories', array('route' => 'blog_homepage'));
+        $menu->addChild('Category', array('route' => 'blog_homepage'));
         // ... add more children
 
         return $menu;

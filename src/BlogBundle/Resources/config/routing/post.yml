@@ -5,7 +5,7 @@ post_index:
 
 post_show:
     path:     /{id}/show
-    defaults: { _controller: "BlogBundle:Post:show" }
+    defaults: { _controller: "BlogBundle:Post:index" }
     methods:  GET
 
 post_new:
