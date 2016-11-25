@@ -5,3 +5,13 @@ blog_post:
 blog_homepage:
     path:     /
     defaults: { _controller: BlogBundle:Default:index }
+
+blog_category:
+    resource: "@BlogBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+blog_catalog:
+    resource: "@BlogBundle/Resources/config/routing/catalog.yml"
+    prefix:   /catalog
+
+
