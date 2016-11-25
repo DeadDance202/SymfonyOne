@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div id="wrapper">
+    <h1>Catalogs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for catalog in catalogs %}
+            <tr>
+                <td><a href="{{ path('catalog_show', { 'id': catalog.id }) }}">{{ catalog.id }}</a></td>
+                <td>{{ catalog.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('catalog_show', { 'id': catalog.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('catalog_edit', { 'id': catalog.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('catalog_new') }}">Create a new catalog</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
