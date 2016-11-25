@@ -70,3 +70,9 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+
+iphp_file_store:
+    mappings:
+       image:
+           upload_dir:  %kernel.root_dir%/../web/images
+           upload_path: /images

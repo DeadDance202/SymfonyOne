@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Catalog
- *
+ * @FileStore\Uploadable
  * @ORM\Table(name="catalog")
  * @ORM\Entity(repositoryClass="BlogBundle\Repository\CatalogRepository")
  */
@@ -27,7 +27,12 @@ class Catalog
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-
+    /**
+     * @var array
+     * @Assert\File( maxSize="20M")
+     * @FileStore\UploadableField(mapping="img")
+     */
+    private $img;
 
     /**
      * Get id
