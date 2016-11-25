@@ -70,3 +70,8 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+knp_menu:
+    twig:
+        template: KnpMenuBundle::menu.html.twig
+    templating: false
+    default_renderer: twig
