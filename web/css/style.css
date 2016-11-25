@@ -50,7 +50,8 @@ code {
 #wrapper {
 	background: #d5d5d5;
 	margin: 1em auto;  
-	width: 85%; 
+	width: 85%;
+	margin-top: 50px;
 	}
 #container { 
 

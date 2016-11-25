@@ -46,25 +46,13 @@ class PostController extends Controller
             return $this->redirectToRoute('post_show', array('id' => $post->getId()));
         }
 
-        return $this->render('post/new.html.twig', array(
+        return $this->render('BlogBundle:post:new.html.twig', array(
             'post' => $post,
             'form' => $form->createView(),
         ));
     }
 
-    /**
-     * Finds and displays a post entity.
-     *
-     */
-    public function showAction(Post $post)
-    {
-        $deleteForm = $this->createDeleteForm($post);
 
-        return $this->render('post/show.html.twig', array(
-            'post' => $post,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Displays a form to edit an existing post entity.
@@ -73,7 +61,7 @@ class PostController extends Controller
     public function editAction(Request $request, Post $post)
     {
         $deleteForm = $this->createDeleteForm($post);
-        $editForm = $this->createForm('BlogBundle\Form\PostType', $post);
+        $editForm = $this->createForm('BlogBundle\Form\PostEditType', $post);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -82,7 +70,7 @@ class PostController extends Controller
             return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
         }
 
-        return $this->render('post/edit.html.twig', array(
+        return $this->render('BlogBundle:post:edit.html.twig', array(
             'post' => $post,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

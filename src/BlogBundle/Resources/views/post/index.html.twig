@@ -1,18 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div id="wrapper">
     <h1>Posts list</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Content</th>
-                <th>Createdat</th>
-                <th>Updatedat</th>
-                <th>Actions</th>
+                <th> Id</th>
+                <th> Title</th>
+                <th> Description</th>
+                <th> Content</th>
+                <th> Createdat</th>
+                <th> Updatedat</th>
+                <th> Actions </th>
             </tr>
         </thead>
         <tbody>
@@ -26,9 +27,7 @@
                 <td>{% if post.updatedAt %}{{ post.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('post_show', { 'id': post.id }) }}">show</a>
-                        </li>
+
                         <li>
                             <a href="{{ path('post_edit', { 'id': post.id }) }}">edit</a>
                         </li>
@@ -44,4 +43,5 @@
             <a href="{{ path('post_new') }}">Create a new post</a>
         </li>
     </ul>
+    </div>
 {% endblock %}

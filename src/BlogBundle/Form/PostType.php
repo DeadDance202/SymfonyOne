@@ -14,8 +14,13 @@ class PostType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')->add('description')->add('content')->add('createdAt', DateTimeType::class)
-            ->add('updatedAt', DateTimeType::class)        ;
+        $builder->add('title')
+            ->add('description')
+            ->add('content');
+
+        $builder->add('createdAt', DateTimeType::class, array('data' => new \DateTime($timezone="Europe/Vilnius"),));
+
+        $builder->add('updatedAt', DateTimeType::class, array('data' => new \DateTime($timezone="Europe/Vilnius"),)) ;
     }
     
     /**
