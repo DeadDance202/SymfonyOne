@@ -18,7 +18,6 @@ class CategoryType extends AbstractType
     {
         $builder->add('name')->add('isActive')->add('parent')        ;
     }
-
     /**
      * {@inheritdoc}
      */
