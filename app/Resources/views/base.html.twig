@@ -23,12 +23,10 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ path('blog_homepage') }}">GuitarLand</a>
-
+                <ul class="nav navbar-nav">
+                <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                </ul>
             </div>
-
-            {{ knp_menu_render('main') }}
-
-
             <ul class="nav navbar-nav navbar-right">
                 {% if is_granted('ROLE_USER') %}
                     <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a></li>
@@ -53,8 +51,9 @@
 
             <nav class="navbar navbar-default navbar">
                 <div class="container-fluid">
-
-                       {{ knp_menu_render('main') }}
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    </ul>
 
                 </div>
             </nav>

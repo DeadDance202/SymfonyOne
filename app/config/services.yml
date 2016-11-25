@@ -4,11 +4,7 @@ parameters:
 #    parameter_name: value
 
 services:
-    app.menu_builder:
-        class: AppBundle\Controller\MenuBuilder
-        arguments: ["@knp_menu.factory"]
-        tags:
-            - { name: knp_menu.menu_builder, method: createMainMenu, alias: main } # The alias is what is used to retrieve the menu
+
 
     # ...
 
