@@ -1,4 +1,4 @@
-Itransition coursetask/
+Itransition coursetask.
 Authors:
 Alexander Gamayonov
 Mishail Savitckiy
