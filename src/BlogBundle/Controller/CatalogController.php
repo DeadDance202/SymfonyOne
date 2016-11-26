@@ -38,6 +38,9 @@ class CatalogController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $catalog->getImage();
+            $fileName = $this->get('app.ImgUploader')->upload($file);
+            $catalog->setImage('images/catalog/'.$fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($catalog);
             $em->flush($catalog);

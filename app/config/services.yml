@@ -4,7 +4,9 @@ parameters:
 #    parameter_name: value
 
 services:
-
+    app.imgUploader:
+            class: BlogBundle\Services\ImgUploader
+            arguments: ['%images_directory%']
 
     # ...
 

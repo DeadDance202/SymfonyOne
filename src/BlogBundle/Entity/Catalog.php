@@ -3,10 +3,11 @@
 namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Catalog
- * @FileStore\Uploadable
+ *
  * @ORM\Table(name="catalog")
  * @ORM\Entity(repositoryClass="BlogBundle\Repository\CatalogRepository")
  */
@@ -27,12 +28,16 @@ class Catalog
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-    /**
-     * @var array
-     * @Assert\File( maxSize="20M")
-     * @FileStore\UploadableField(mapping="img")
+
+     /**
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Please, upload the image product as a JPG file.")
+     * @Assert\File(mimeTypes={"image/jpeg", "image/png", "image/jpg", "image/gif"})
      */
-    private $img;
+    private $image;
+
+
+
 
     /**
      * Get id
@@ -67,4 +72,20 @@ class Catalog
     {
         return $this->name;
     }
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
 }
+
+

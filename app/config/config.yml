@@ -8,6 +8,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    images_directory: '%kernel.root_dir%/../web/images'
 
 framework:
     #esi:             ~
@@ -70,9 +71,3 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
-
-iphp_file_store:
-    mappings:
-       image:
-           upload_dir:  %kernel.root_dir%/../web/images
-           upload_path: /images

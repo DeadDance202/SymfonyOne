@@ -3,6 +3,7 @@
 namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Catalog
@@ -27,6 +28,37 @@ class Catalog
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $path;
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // абсолютный путь к каталогу, куда будут сохраняться загруженные документы
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        //избавьтесь от __ DIR __, так чтобы его не было, когда отображался загруженный документ/изображение
+        return 'uploads/documents';
+    }
 
 
     /**
@@ -63,4 +95,3 @@ class Catalog
         return $this->name;
     }
 }
-

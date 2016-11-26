@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new BlogBundle\BlogBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new Iphp\FileStoreBundle\IphpFileStoreBundle(),
+
 
         ];
 
