@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge" >
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>{% block title %}GuitarLand Homepage{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE-edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}GuitarLand Homepage{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
 
-        {% stylesheets
-        'css/bootstrap.css'
-        'css/style.css'
-        %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
+    {% stylesheets
+    'css/bootstrap.css'
+    'css/style.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-    {% block main %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+{% block main %}
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ path('blog_homepage') }}">GuitarLand</a>
                 <ul class="nav navbar-nav">
-                <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li><a href="{{ path('catalog_index') }}"><span class="glyphicon glyphicon-book"></span> Catalog</a></li>
+                    <li><a href="{{ pgath('category_index') }}"><span class="glyphicon glyphicon-list-alt"></span> Category</a></li>
                 </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">
@@ -38,38 +40,41 @@
             </ul>
         </div>
     </nav>
-    {% endblock %}
-            {% block body %}
+{% endblock %}
+{% block body %}
 
-                    {% block login %}{% endblock %}
+    {% block login %}{% endblock %}
 
 
 
-             {% endblock %}
+{% endblock %}
 {% if is_granted('ROLE_USER') %}
     {% block footer %}
 
-            <nav class="navbar navbar-default navbar">
-                <div class="container-fluid">
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                    </ul>
+        <nav class="navbar navbar-default navbar">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li><a href="{{ path('catalog_index') }}"><span class="glyphicon glyphicon-book"></span> Catalog</a></li>
+                    <li><a href="{{ path('category_index') }}"><span class="glyphicon glyphicon-list-alt"></span> Category</a></li>
+                </ul>
 
-                </div>
-            </nav>
+            </div>
+        </nav>
 
     {% endblock %}
 {% endif %}
-        {% block javascripts %}{% endblock %}
+{% block javascripts %}{% endblock %}
 
-    {% javascripts
-    'js/jquery-2.2.4.min.js'
-    'js/bootstrap-3.3.7.min.js'
-    'js/moment.min.js'
-    'js/highlight.pack.js'
-    %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+{% javascripts
+'js/jquery-2.2.4.min.js'
+'js/bootstrap-3.3.7.min.js'
+'js/moment.min.js'
+'js/highlight.pack.js'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
 
-    </body>
+</body>
 </html>
+
