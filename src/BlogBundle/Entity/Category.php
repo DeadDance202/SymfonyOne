@@ -34,7 +34,11 @@ class Category
      * @ORM\Column(name="isActive", type="boolean")
      */
     private $isActive;
-
+    /**
+     * @ORM\ManyToOne(targetEntity="Catalog")
+     * @ORM\JoinColumn(name="catalog_id",referencedColumnName="id")
+     */
+    private $catalog;
 
     /**
      * Get id
@@ -93,5 +97,28 @@ class Category
     {
         return $this->isActive;
     }
-}
 
+    /**
+     * Set catalog
+     *
+     * @param \BlogBundle\Entity\Catalog $catalog
+     *
+     * @return Category
+     */
+    public function setCatalog(\BlogBundle\Entity\Catalog $catalog = null)
+    {
+        $this->catalog = $catalog;
+
+        return $this;
+    }
+
+    /**
+     * Get catalog
+     *
+     * @return \BlogBundle\Entity\Catalog
+     */
+    public function getCatalog()
+    {
+        return $this->catalog;
+    }
+}

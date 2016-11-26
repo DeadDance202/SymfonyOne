@@ -10,7 +10,7 @@ class ImgUploader
     }
     public function upload(UploadedFile $file)
     {
-        $fileName = $file->guessExtension();
+        $fileName =md5(uniqid()).'.'.$file->guessExtension();
         $file->move($this->targetDir, $fileName);
         return $fileName;
     }

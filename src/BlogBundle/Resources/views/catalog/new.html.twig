@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('js/fileinput.js') }}"></script>
+{% endblock %}
+
 {% block body %}
 <div id="wrapper">
     <h1>Catalog creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_row(form.name) }}
+    {{ form_row(form.image) }}
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 

@@ -38,19 +38,19 @@ class CatalogController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $file = $catalog->getImage();
-            $fileName = $this->get('app.ImgUploader')->upload($file);
-            $catalog->setImage('images/catalog/'.$fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($catalog);
             $em->flush($catalog);
-
-            return $this->redirectToRoute('catalog_show', array('id' => $catalog->getId()));
+            $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
+            return $this->redirectToRoute('catalog_show', array('id' => $catalog->getId(),'catalogs' => $catalogs,));
         }
+        $em = $this->getDoctrine()->getManager();
 
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         return $this->render('BlogBundle:catalog:new.html.twig', array(
             'catalog' => $catalog,
             'form' => $form->createView(),
+            'catalogs' => $catalogs,
         ));
     }
 
@@ -61,10 +61,13 @@ class CatalogController extends Controller
     public function showAction(Catalog $catalog)
     {
         $deleteForm = $this->createDeleteForm($catalog);
+        $em = $this->getDoctrine()->getManager();
 
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         return $this->render('BlogBundle:catalog:show.html.twig', array(
             'catalog' => $catalog,
             'delete_form' => $deleteForm->createView(),
+            'catalogs' => $catalogs,
         ));
     }
 
@@ -83,11 +86,14 @@ class CatalogController extends Controller
 
             return $this->redirectToRoute('catalog_edit', array('id' => $catalog->getId()));
         }
+        $em = $this->getDoctrine()->getManager();
 
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         return $this->render('BlogBundle:catalog:edit.html.twig', array(
             'catalog' => $catalog,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'catalogs' => $catalogs,
         ));
     }
 
@@ -105,8 +111,10 @@ class CatalogController extends Controller
             $em->remove($catalog);
             $em->flush($catalog);
         }
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->redirectToRoute('catalog_index');
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
+        return $this->redirectToRoute('catalog_index',array('catalogs' => $catalogs));
     }
 
     /**

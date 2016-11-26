@@ -22,8 +22,11 @@ class CategoryController extends Controller
 
         $categories = $em->getRepository('BlogBundle:Category')->findAll();
 
+
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         return $this->render('BlogBundle:category:index.html.twig', array(
             'categories' => $categories,
+            'catalogs' => $catalogs,
         ));
     }
 
@@ -42,12 +45,17 @@ class CategoryController extends Controller
             $em->persist($category);
             $em->flush($category);
 
-            return $this->redirectToRoute('category_show', array('id' => $category->getId()));
-        }
 
+            $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
+            return $this->redirectToRoute('category_show', array('id' => $category->getId(),'catalogs' => $catalogs,));
+        }
+        $em = $this->getDoctrine()->getManager();
+
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         return $this->render('BlogBundle:category:new.html.twig', array(
             'category' => $category,
             'form' => $form->createView(),
+            'catalogs' => $catalogs,
         ));
     }
 
@@ -58,10 +66,13 @@ class CategoryController extends Controller
     public function showAction(Category $category)
     {
         $deleteForm = $this->createDeleteForm($category);
+        $em = $this->getDoctrine()->getManager();
 
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         return $this->render('BlogBundle:category:show.html.twig', array(
             'category' => $category,
             'delete_form' => $deleteForm->createView(),
+            'catalogs' => $catalogs,
         ));
     }
 
@@ -74,17 +85,20 @@ class CategoryController extends Controller
         $deleteForm = $this->createDeleteForm($category);
         $editForm = $this->createForm('BlogBundle\Form\CategoryType', $category);
         $editForm->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
 
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('category_edit', array('id' => $category->getId()));
+            return $this->redirectToRoute('category_edit', array('id' => $category->getId(),'catalogs' => $catalogs));
         }
 
         return $this->render('BlogBundle:category:edit.html.twig', array(
             'category' => $category,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'catalogs' => $catalogs,
         ));
     }
 
@@ -96,14 +110,16 @@ class CategoryController extends Controller
     {
         $form = $this->createDeleteForm($category);
         $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
 
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($category);
             $em->flush($category);
         }
 
-        return $this->redirectToRoute('category_index');
+        return $this->redirectToRoute('category_index',array('catalogs' => $catalogs,));
     }
 
     /**

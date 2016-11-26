@@ -21,10 +21,13 @@ class PostController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
+
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         $posts = $em->getRepository('BlogBundle:Post')->findAll();
 
         return $this->render('BlogBundle:post:index.html.twig', array(
             'posts' => $posts,
+            'catalogs' => $catalogs,
         ));
     }
 
@@ -43,12 +46,17 @@ class PostController extends Controller
             $em->persist($post);
             $em->flush($post);
 
-            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
-        }
 
+            $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
+            return $this->redirectToRoute('post_show', array('id' => $post->getId(),'catalogs' => $catalogs,));
+        }
+        $em = $this->getDoctrine()->getManager();
+
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         return $this->render('BlogBundle:post:new.html.twig', array(
             'post' => $post,
             'form' => $form->createView(),
+            'catalogs' => $catalogs,
         ));
     }
 
@@ -63,17 +71,20 @@ class PostController extends Controller
         $deleteForm = $this->createDeleteForm($post);
         $editForm = $this->createForm('BlogBundle\Form\PostEditType', $post);
         $editForm->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
 
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         if ($editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
+            return $this->redirectToRoute('post_edit', array('id' => $post->getId(),'catalogs' => $catalogs,));
         }
 
         return $this->render('BlogBundle:post:edit.html.twig', array(
             'post' => $post,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'catalogs' => $catalogs,
         ));
     }
 
@@ -91,8 +102,10 @@ class PostController extends Controller
             $em->remove($post);
             $em->flush($post);
         }
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->redirectToRoute('post_index');
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
+        return $this->redirectToRoute('post_index',array('catalogs' => $catalogs,));
     }
 
     /**
@@ -104,8 +117,11 @@ class PostController extends Controller
      */
     private function createDeleteForm(Post $post)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('post_delete', array('id' => $post->getId())))
+            ->setAction($this->generateUrl('post_delete', array('id' => $post->getId(),'catalogs' => $catalogs,)))
             ->setMethod('DELETE')
             ->getForm()
         ;

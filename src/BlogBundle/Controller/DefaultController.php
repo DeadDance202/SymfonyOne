@@ -11,9 +11,11 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $posts = $em->getRepository('BlogBundle:Post')->findAll();
+        $catalogs = $em->getRepository('BlogBundle:Catalog')->findAll();
 
         return $this->render('BlogBundle:Default:index.html.twig', array(
             'posts' => $posts,
+            'catalogs' => $catalogs,
         ));
     }
 }

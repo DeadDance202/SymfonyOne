@@ -25,8 +25,11 @@
                 <a class="navbar-brand" href="{{ path('blog_homepage') }}">GuitarLand</a>
                 <ul class="nav navbar-nav">
                 <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                    <li><a href="{{ path('catalog_index') }}"><span class="glyphicon glyphicon-book"></span> Catalog</a></li>
-                    <li><a href="{{ path('category_index') }}"><span class="glyphicon glyphicon-list-alt"></span> Category</a></li>
+                    {% for catalog in catalogs %}
+                        <li><a href="{{ path('catalog_show', { 'id': catalog.id }) }}">{{ catalog.name}}</a></li>
+                    {% endfor %}
+
+
                 </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">
@@ -56,7 +59,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                         <li><a href="{{ path('catalog_index') }}"><span class="glyphicon glyphicon-book"></span> Catalog</a></li>
-                        <li><a href="{{ path('category_index') }}"><span class="glyphicon glyphicon-list-alt"></span> Category</a></li>
+
                     </ul>
 
                 </div>
