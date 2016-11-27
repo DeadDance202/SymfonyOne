@@ -13,5 +13,8 @@ blog_category:
 blog_catalog:
     resource: "@BlogBundle/Resources/config/routing/catalog.yml"
     prefix:   /catalog
+blog_product:
+    resource: "@BlogBundle/Resources/config/routing/product.yml"
+    prefix:   /product
 
 

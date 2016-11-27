@@ -210,3 +210,4 @@ class Post
         return $this->updatedAt;
     }
 }
+

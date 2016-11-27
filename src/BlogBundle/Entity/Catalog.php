@@ -68,4 +68,28 @@ class Catalog
         return $this->name;
     }
 
+
+    /**
+     * Set categiry
+     *
+     * @param \BlogBundle\Entity\Category $categiry
+     *
+     * @return Catalog
+     */
+    public function setCategiry(\BlogBundle\Entity\Category $categiry = null)
+    {
+        $this->categiry = $categiry;
+
+        return $this;
+    }
+
+    /**
+     * Get categiry
+     *
+     * @return \BlogBundle\Entity\Category
+     */
+    public function getCategiry()
+    {
+        return $this->categiry;
+    }
 }

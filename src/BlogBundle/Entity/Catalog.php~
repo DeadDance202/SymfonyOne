@@ -29,12 +29,7 @@ class Catalog
      */
     private $name;
 
-     /**
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
-     * @Assert\NotBlank(message="Please, upload the image product as a JPG file.")
-     * @Assert\File(mimeTypes={"image/jpeg", "image/png", "image/jpg", "image/gif"})
-     */
-    private $image;
+
 
 
 
@@ -72,20 +67,29 @@ class Catalog
     {
         return $this->name;
     }
+
+
     /**
-     * @return mixed
+     * Set categiry
+     *
+     * @param \BlogBundle\Entity\Category $categiry
+     *
+     * @return Catalog
      */
-    public function getImage()
+    public function setCategiry(\BlogBundle\Entity\Category $categiry = null)
     {
-        return $this->image;
+        $this->categiry = $categiry;
+
+        return $this;
     }
+
     /**
-     * @param mixed $image
+     * Get categiry
+     *
+     * @return \BlogBundle\Entity\Category
      */
-    public function setImage($image)
+    public function getCategiry()
     {
-        $this->image = $image;
+        return $this->categiry;
     }
 }
-
-

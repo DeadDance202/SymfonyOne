@@ -18,6 +18,7 @@
             <tr>
                 <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
                 <td>{{ category.name }}</td>
+                <td>{{ category.catalog.name}}</td>
                 <td>{% if category.isActive %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>

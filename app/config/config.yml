@@ -8,7 +8,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    images_directory: '%kernel.root_dir%/../web/images/catalog'
+    images_directory: '%kernel.root_dir%/../web/images/product'
 
 framework:
     #esi:             ~
@@ -71,3 +71,17 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+services:
+    main.menu_builder:
+            class:    BlogBundle\Services\MenuBuilder
+            arguments: ['@knp_menu.factory', '@doctrine.orm.entity_manager']
+            tags:
+                - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
+knp_menu:
+    # use "twig: false" to disable the Twig extension and the TwigRenderer
+    twig:
+        template: menu/knp_menu.html.twig
+    #  if true, enables the helper for PHP templates
+    templating: false
+    # the renderer to use, list is also available by default
+    default_renderer: twig

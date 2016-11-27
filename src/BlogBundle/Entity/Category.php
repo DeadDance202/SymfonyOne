@@ -35,6 +35,7 @@ class Category
      */
     private $isActive;
     /**
+     *
      * @ORM\ManyToOne(targetEntity="Catalog")
      * @ORM\JoinColumn(name="catalog_id",referencedColumnName="id")
      */

@@ -2,7 +2,9 @@
 
 namespace BlogBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +17,10 @@ class CategoryType extends AbstractType
     {
         $builder->add('name')
             ->add('isActive')
-            ;
+        ->add('catalog',EntityType::Class,
+            array('class'=>'BlogBundle:Catalog',
+                'choice_label'=>'name'))
+        ;
     }
     
     /**

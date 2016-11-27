@@ -28,14 +28,25 @@ class MenuBuilder
         $this->em = $em;
     }
 
-    public function createMainMenu(array $options)
+    public function createMainMenu()
     {
         $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', '"nav navbar-nav');
 
-        $menu->addChild('Home', array('route' => 'homepage'));
-        // ... add more children
+        $menu->addChild(
+            'category',
+            array('label' => 'Guitars'))->setAttribute('dropdown', true);
 
-
+        $listCategories = $this->em->getRepository('BlogBundle:Category')->findBy(array('catalog'=>1));
+        foreach ($listCategories as $category) {
+            $menu['category']->addChild(
+                'category' . $category->getName(),
+                array('label' => $category->getName(),
+                    'route' => 'category',
+                    'routeParameters' => array('id'=>1)
+                )
+            );
+        }
         return $menu;
     }
 
