@@ -36,6 +36,8 @@ security:
             # require ROLE_ADMIN for /admin*
 
             - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY,}
+            - { path: restoreToken, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: restore, roles: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY}
             - { path: ^/registration, roles: IS_AUTHENTICATED_ANONYMOUSLY,}
 

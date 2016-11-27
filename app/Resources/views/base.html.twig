@@ -46,6 +46,7 @@
                         {% endif %}
                     </ul>
                 </div>
+
             </div>
     </nav>
     </div>
@@ -53,18 +54,12 @@
 
     {% endblock %}
     {% block main %}
-
     {% endblock %}
             {% block body %}
-
-                    {% block login %}{% endblock %}
-
-
-
-             {% endblock %}
+   {% block login %}{% endblock %}
+{% endblock %}
 {% if is_granted('ROLE_USER') %}
     {% block footer %}
-
             <nav class="navbar navbar-default navbar">
                 <div class="container-fluid">
                     <ul class="nav navbar-nav">
@@ -81,22 +76,22 @@
                             <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                         {% endif %}
                     </ul>
-
-                </div>
-            </nav>
+            </div>
+        </nav>
 
     {% endblock %}
 {% endif %}
-        {% block javascripts %}{% endblock %}
+{% block javascripts %}{% endblock %}
 
-    {% javascripts
-    'js/jquery-2.2.4.min.js'
-    'js/bootstrap-3.3.7.min.js'
-    'js/moment.min.js'
-    'js/highlight.pack.js'
-    %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+{% javascripts
+'js/jquery-2.2.4.min.js'
+'js/bootstrap-3.3.7.min.js'
+'js/moment.min.js'
+'js/highlight.pack.js'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
 
-    </body>
+</body>
 </html>
+
