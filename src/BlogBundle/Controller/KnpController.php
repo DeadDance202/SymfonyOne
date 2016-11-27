@@ -16,7 +16,6 @@ public function indexAction($id)
 
     $repository=$this->getDoctrine()->getRepository('BlogBundle:Category');
     $category=$repository->findBy(array('id'=>$id));
-
     return $this->render('BlogBundle:Knp:index.html.twig',array('category'=>$category));
     }
 }
