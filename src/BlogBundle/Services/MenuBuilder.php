@@ -43,7 +43,7 @@ class MenuBuilder
                 'category' . $category->getName(),
                 array('label' => $category->getName(),
                     'route' => 'category',
-                    'routeParameters' => array('id'=>1)
+                    'routeParameters' => array('id'=>$category->getId())
                 )
             );
         }

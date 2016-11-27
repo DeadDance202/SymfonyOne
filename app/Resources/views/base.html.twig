@@ -6,42 +6,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>{% block title %}GuitarLand Homepage{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-
         {% stylesheets
         'css/bootstrap.css'
         'css/style.css'
         %}
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
-
-
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-    {% block main %}
+    {% block header %}
+<div class="container">
+    <div class="row">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ path('blog_homepage') }}">GuitarLand</a>
-                {% if is_granted('ROLE_USER') %}
-                <ul class="nav navbar-nav pad">
-                    {{ knp_menu_render('main',{'currentClass': false}) }}
-                </ul>
-                {% endif %}
-
-
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                {% if is_granted('ROLE_USER') %}
-                    <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a></li>
-                    <li><a href="{{ path('security_logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                {% else %}
-                    <li><a href="{{ path('register') }}"><span class="glyphicon glyphicon-user"></span> Registration</a></li>
-                    <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                {% endif %}
-            </ul>
-        </div>
+                <div class="collapse navbar-collapse">
+                        <a class="navbar-brand" href="{{ path('blog_homepage') }}"> GuitarLand</a>
+                        {% if is_granted('ROLE_USER') %}
+                        <ul class="nav navbar-nav pad">
+                            {{ knp_menu_render('main',{'currentClass': false}) }}
+                        </ul>
+                        {% endif %}
+                </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if is_granted('ROLE_USER') %}
+                            <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a></li>
+                            <li><a href="{{ path('security_logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        {% else %}
+                            <li><a href="{{ path('register') }}"><span class="glyphicon glyphicon-user"></span> Registration</a></li>
+                            <li><a href="{{ path('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
     </nav>
+    </div>
+</div>
+    {% endblock %}
+    {% block main %}
     {% endblock %}
             {% block body %}
 

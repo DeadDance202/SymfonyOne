@@ -14,9 +14,9 @@ class KnpController extends Controller
 public function indexAction($id)
     {
 
-    $repository=$this->getDoctrine()->getRepository('BlogBundle:Category');
-    $serch=$repository->findBy(array('id'=>$id));
+    $repository=$this->getDoctrine()->getRepository('BlogBundle:Product');
+    $products=$repository->findBy(array('category'=>$id));
 
-    return $this->render('BlogBundle:Knp:index.html.twig');
+    return $this->render('BlogBundle:Knp:index.html.twig',array('products'=>$products));
     }
 }

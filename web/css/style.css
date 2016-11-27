@@ -1,7 +1,16 @@
 .pad{
 	padding-top: 12px;
 }
+.blockimg{
+	border: solid 1px;
+	margin-left:50px;
+}
+.textblockimg{
 
+}
+.blockimgicok{
+
+}
 .error{
 	background: #d62c1a;
 	}
