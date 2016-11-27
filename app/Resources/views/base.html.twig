@@ -16,19 +16,26 @@
     </head>
     <body>
     {% block header %}
-<div class="container">
+<div class="container-fluid">
     <div class="row">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <div class="collapse navbar-collapse">
-                        <a class="navbar-brand" href="{{ path('blog_homepage') }}"> GuitarLand</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
+                    <span class="sr-only">Open navigate</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('blog_homepage') }}"> GuitarLand</a>
+                </div>
+                <div class="collapse navbar-collapse" id="responsive-menu">
                         {% if is_granted('ROLE_USER') %}
                         <ul class="nav navbar-nav pad">
-                            {{ knp_menu_render('main',{'currentClass': false}) }}
+                          <li>  {{ knp_menu_render('main',{'currentClass': false}) }}</li>
                         </ul>
                         {% endif %}
-                </div>
+
                     <ul class="nav navbar-nav navbar-right">
                         {% if is_granted('ROLE_USER') %}
                             <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a></li>
@@ -39,6 +46,7 @@
                         {% endif %}
                     </ul>
                 </div>
+            </div>
     </nav>
     </div>
 </div>
