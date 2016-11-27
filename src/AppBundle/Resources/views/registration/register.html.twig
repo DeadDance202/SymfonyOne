@@ -4,23 +4,31 @@
 {% extends 'base.html.twig' %}
         {% block body%}
 
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4" style="border:1px solid;background:#66dd66">
-                <div class="loginform">
 
-                        {{ form_start(form) }}
-                        {{ form_row(form.username) }}
-                        {{ form_row(form.email) }}
-                        {{ form_row(form.plainPassword.first) }}
-                        {{ form_row(form.plainPassword.second) }}
-                        <div class="buttonForm">
-                            <button class="btn btn-warning" type="submit">Register!</button>
+
+            <div class="container logstyle">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 col-md-offset-4">
+                        <div class="account-wall">
+                            <div class="loginform">
+                                <h1 class="text-center">Registration</h1>
+                                {{ form_start(form) }}
+                                {{ form_row(form.username) }}
+                                {{ form_row(form.email) }}
+                                {{ form_row(form.plainPassword.first) }}
+                                {{ form_row(form.plainPassword.second) }}
+                                <div class="buttonForm">
+                                    <button class="btn btn-warning" type="submit">Register!</button>
+                                    <a href="{{ path('restore') }}" class="text-center new-account">Restore</a>
+                                </div>
+                                {{ form_end(form) }}
+                                </div>
+                            <br>
+
                         </div>
-                        {{ form_end(form) }}
+
+                        <br>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-            </div>
-
         {% endblock %}

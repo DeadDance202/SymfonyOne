@@ -1,3 +1,17 @@
+.poststyle{
+	margin-top:25px;
+	background: white;
+	box-shadow: 0 0 10px #080808;
+	border: 1px;
+}
+.logstyle{
+	margin-top: 100px;
+	background: white;
+	box-shadow: 0 0 10px #080808;
+	border-radius: 8px ;
+	border: solid 1px;
+}
+
 .catName{
 	text-align: center;
 	padding-top: 25px;
