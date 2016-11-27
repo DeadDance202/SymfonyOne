@@ -1,3 +1,7 @@
+.catName{
+	text-align: center;
+	padding-top: 25px;
+}
 .pad{
 	;
 	padding-top: 12px;
@@ -6,13 +10,20 @@
 	border: solid 1px;
 	margin-left:50px;
 }
-
-
-
+.ground
+{
+	background: #222222;
+}
+.ground:hover{
+	background: #ffffff;;
+}
+.transition {
+	transition: 1.5s;
+}
 .navbar-inverse .navbar-nav li a{
 	color: #CB1B20;
 }
-.thumbnail{
+.textcolor{
 background: #CB1B20;
 text-align: center;
 	box-shadow: 0 0 10px #080808;
@@ -47,7 +58,7 @@ h2 {
 	margin-bottom: 1em; 
 	}
 h3 {
-	color: #00001e;
+	color: #cb1b20;
 	font-family: Comic Sans, Comic Sans MS, cursive;
 	text-shadow: 1px 1px 2px black, 0 0 1em white;
 	}

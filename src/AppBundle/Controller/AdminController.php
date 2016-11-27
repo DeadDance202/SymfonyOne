@@ -13,10 +13,10 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminController extends Controller
 {
     /**
-     * @Route("/admin")
+     * @Route(path="/admin", name="admin")
      */
     public function adminAction()
     {
-        return new Response('<html><body>Admin page!</body></html>');
+        return $this->render('AppBundle:security:Login.html.twig');
     }
 }
