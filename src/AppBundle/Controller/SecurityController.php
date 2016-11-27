@@ -82,11 +82,13 @@ public function loginAction(Request $request)
             $em->persist($token);
             $message = \Swift_Message::newInstance()
                 ->setSubject('Восстановление пароля ')
-                ->setFrom('Guitarsland')
+                ->setFrom('recovery@Guitarslands.by')
                 ->setTo($user->getEmail())
                 ->setBody(
-                    $this->renderView('security/restoreToken.html.twig', array(
-                        'token' => $token->getToken()
+                    $this->renderView(
+                        'security/recoveryEmail.html.twig', array(
+                            'username' => $user->getUsername(),
+                            'token' => $token->getToken(),
                     )),
                     'text/html'
                 );
@@ -103,6 +105,7 @@ public function loginAction(Request $request)
      */
     public function restoreTokenAction($token, Request $request)
     {
+        $url = $this->_generateRecoveryInfo($user);
         $em = $this->getDoctrine()->getManager();
         $token = $em->getRepository('AppBundle:RestoreToken')->findToken($token);
         $user = $token->getUsername();
@@ -110,10 +113,8 @@ public function loginAction(Request $request)
         $form
             ->remove('username')
             ->remove('roles')
-            ->remove('isActive')
-            ->remove('subscription')
             ->remove('email')
-            ->remove('password')
+            ->remove('plainPassword')
             ->add('password', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'first_options' => array('label' => 'Password'),
