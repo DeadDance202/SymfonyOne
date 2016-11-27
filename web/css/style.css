@@ -1,16 +1,23 @@
 .pad{
+	;
 	padding-top: 12px;
 }
 .blockimg{
 	border: solid 1px;
 	margin-left:50px;
 }
-.textblockimg{
 
-}
-.blockimgicok{
 
+
+.navbar-inverse .navbar-nav li a{
+	color: #CB1B20;
 }
+.thumbnail{
+background: #CB1B20;
+text-align: center;
+	box-shadow: 0 0 10px #080808;
+}
+
 .error{
 	background: #d62c1a;
 	}
@@ -40,14 +47,14 @@ h2 {
 	margin-bottom: 1em; 
 	}
 h3 {
-	color:#0000F0;
+	color: #00001e;
+	font-family: Comic Sans, Comic Sans MS, cursive;
+	text-shadow: 1px 1px 2px black, 0 0 1em white;
 	}
 p { 
 	margin: 0 0 1em 0; 
 	}
-a { 
-	color: #0000F0; 
-	}
+
 a:hover { 
 	text-decoration: none; 
 	}
@@ -65,6 +72,7 @@ code {
 	margin: 1em auto;  
 	width: 85%;
 	margin-top: 50px;
+	box-shadow: 0 0 10px #080808;
 	}
 #container { 
 

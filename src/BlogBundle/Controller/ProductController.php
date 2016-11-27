@@ -42,7 +42,7 @@ class ProductController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $product->getImage();
             $fileName = $this->get('app.imgUploader')->upload($file);
-            $product->setImage('images/'.$fileName);
+            $product->setImage('images/product/'.$fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush($product);
@@ -85,7 +85,7 @@ class ProductController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $file = $product->getImage();
             $fileName = $this->get('app.imgUploader')->upload($file);
-            $product->setImage('images/'.$fileName);
+            $product->setImage('images/product/'.$fileName);
             $product->setUpdatedAt(new \DateTime($timezone="Europe/Vilnius"));
             $this->getDoctrine()->getManager()->flush();
 

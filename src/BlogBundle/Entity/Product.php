@@ -75,6 +75,7 @@ class Product
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      * @Assert\NotBlank(message="Please, upload the image product as a JPG file.")
      * @Assert\File(mimeTypes={"image/jpeg", "image/png", "image/jpg", "image/gif"})
+     *
      */
     private $image;
     /**
