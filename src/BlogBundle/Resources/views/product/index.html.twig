@@ -14,6 +14,7 @@
                 <th>Updatedat</th>
                 <th>Isactive</th>
                 <th>Sku</th>
+                <th>caregory</th>
                 <th>Image</th>
                 <th>Actions</th>
             </tr>
@@ -28,6 +29,7 @@
                 <td>{% if product.updatedAt %}{{ product.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if product.isActive %}Yes{% else %}No{% endif %}</td>
                 <td>{{ product.sKU }}</td>
+                <td>{{ product.category.id }}</td>
                 <td><a href="" class="mask"><img class="img-responsive zoom-img" src="{{ product.image }}" width="50px"
                                                  height="50px" alt="" /></a></td>
                 <td>

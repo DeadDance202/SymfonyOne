@@ -2,57 +2,71 @@
 
 {% block body %}
 <div id="wrapper">
-    <h1>Product</h1>
+    <h1  class="text-center">{{ product.name }}</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail textcolor">
+                    <img class="img-rounded img-responsive " src="{{ product.image }}" alt="" style="height:250px"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <h3>Description</h3>
+                {{ product.description }}
+                <h3>SKU</h3>
+                {{ product.sKU }}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ product.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ product.description }}</td>
-            </tr>
-            <tr>
-                <th>Createdat</th>
-                <td>{% if product.createdAt %}{{ product.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Updatedat</th>
-                <td>{% if product.updatedAt %}{{ product.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Isactive</th>
-                <td>{% if product.isActive %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Sku</th>
-                <td>{{ product.sKU }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ product.image }}</td>
-            </tr>
-        </tbody>
-    </table>
+                {% if is_granted('ROLE_MODERATOR') %}
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ product.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ product.name }}</td>
+                    </tr>
+                                       <tr>
+                        <th>Createdat</th>
+                        <td>{% if product.createdAt %}{{ product.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Updatedat</th>
+                        <td>{% if product.updatedAt %}{{ product.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Isactive</th>
+                        <td>{% if product.isActive %}Yes{% else %}No{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Sku</th>
+                        <td>{{ product.sKU }}</td>
+                    </tr>
 
-    <ul>
-        <li>
-            <a href="{{ path('product_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    </tbody>
+                </table>
+                {% endif %}
+                {% if is_granted('ROLE_MODERATOR') %}
+                               <button type="button" class="btn btn-default btnstyle">
+                    <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a></button>
+                {% endif %}
+                <button type="button" class="btn btn-default btnstyle">
+                    <a href="{{ path('category', { 'id': product.category.id }) }}">Back to catygory</a></button>
+
+                {% if is_granted('ROLE_MODERATOR') %}
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-danger btnstyle">
+                {{ form_end(delete_form) }}
+                {% endif %}
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 </div>
 {% endblock %}

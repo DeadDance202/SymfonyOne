@@ -1,3 +1,7 @@
+.btnstyle{
+	box-shadow: 2px 2px 10px #080808;
+	margin-top: 10px;
+}
 .poststyle{
 	margin-top:25px;
 	background: white;
