@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div id="wrapper">
+        <br>
+        <br><br>
+        <h1  class="text-center">Your profile</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <h3>{{ app.user.username }}
+                    {{ app.user.email }}
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}{% endblock %}
