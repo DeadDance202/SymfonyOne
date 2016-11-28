@@ -47,6 +47,7 @@
                     </tbody>
                 </table>
                 {% endif %}
+                <br>
                 {% if is_granted('ROLE_MODERATOR') %}
                                <button type="button" class="btn btn-default btnstyle">
                     <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a></button>
