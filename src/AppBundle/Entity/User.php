@@ -6,22 +6,24 @@
  * Time: 14:46
  */
 // src/AppBundle/Entity/User.php
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 
 /**
  * @ORM\Table(name="app_users")
  * @UniqueEntity(fields="email", message="Email already taken")
  * @UniqueEntity(fields="username", message="Username already taken")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User implements UserInterface, \Serializable
+class User implements AdvancedUserInterface, \Serializable
 {
+    const USERS_PER_PAGE = 10;
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -225,5 +227,23 @@ class User implements UserInterface, \Serializable
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+
+    public function isAccountNonExpired()
+    {
+    return true;
+    }
+    public function isAccountNonLocked()
+    {
+    return true;
+    }
+    public function isCredentialsNonExpired()
+    {
+    return true;
+    }
+    public function isEnabled()
+    {
+    return true;
     }
 }

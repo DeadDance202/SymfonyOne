@@ -18,8 +18,10 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new BlogBundle\BlogBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 
 
         ];

@@ -1,0 +1,13 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block body %}
+
+    <p>Username: {{ username }}</p>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <a href="{{ path('admin_users_show') }}">Cancel</a>
+
+{% endblock %}

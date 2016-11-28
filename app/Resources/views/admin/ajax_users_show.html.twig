@@ -1,0 +1,24 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block body %}
+
+    <div id="users"></div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.js"
+            integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+            crossorigin="anonymous"></script>
+    <script src="{{ asset('js/ajaxgrid.js') }}"></script>
+    <script>
+        $('#users').ajaxgrid({
+            'dataUrl': '{{ path('admin_users_show') }}',
+            'sortableColumns': ['username'],
+            'filterableColumns': [],
+            'rowsPerPage': 10,
+        });
+    </script>
+{% endblock %}
