@@ -19,7 +19,7 @@ class AppKernel extends Kernel
             new BlogBundle\BlogBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
 
 
         ];

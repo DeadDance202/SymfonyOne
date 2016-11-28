@@ -11,8 +11,8 @@ class KnpController extends Controller
      * @Route(path="/{id}", name="category", requirements={"id": "\d+"})
      * @Route("/blog/{page}", name="blog_list", requirements={"page": "\d+"})
      */
-    public $articlesPerPage = 8;
-    public function indexAction(Request $request,$id)
+
+    public function indexAction($id)
     {
 
         $repository=$this->getDoctrine()->getRepository('BlogBundle:Product');
@@ -20,13 +20,8 @@ class KnpController extends Controller
         $em = $this->getDoctrine()->getManager();
         $name = $em->getRepository('BlogBundle:Category')->find($id);
 
-        $articles = $repository->findAll();
-        $paginator  = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $articles,
-            $request->query->getInt('page', 1),
-            $this->articlesPerPage);
-        return $this->render('BlogBundle:Knp:index.html.twig',array('products'=>$products,'name'=>$name,'pagination' => $pagination));
+
+        return $this->render('BlogBundle:Knp:index.html.twig',array('products'=>$products,'name'=>$name));
 
     }
 }

@@ -28,7 +28,7 @@ class RestoreToken
      */
     private $user;
     /**
-     * @ORM\Column(name="token", type="string", length=255, unique=true)
+     * @ORM\Column(name="token", type="string", length=255)
      */
     private $token;
     public function __construct($user)
