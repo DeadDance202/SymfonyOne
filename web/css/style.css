@@ -15,7 +15,9 @@
 	border-radius: 8px ;
 	border: solid 1px;
 }
-
+a{
+	color: #cb1b20;
+}
 .catName{
 	text-align: center;
 	padding-top: 25px;

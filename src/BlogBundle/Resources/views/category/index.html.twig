@@ -2,39 +2,33 @@
 
 {% block body %}
 <div id="wrapper">
-    <h1>Categories list</h1>
+    <h1 class="text-center">Categories list</h1>
+    <div class="container">
+        <div class="row">
+            {% for category in categories %}
+                <div class="col-md-3">
+                    {{ category.id }}
+                </div>
+                <div class="col-md-3">
+                    {{ category.name }}
+                </div>
+                <div class="col-md-3">
+                {{ category.catalog.name }}
+                </div>
+                <div class="col-md-3">
+                        <ul>
+                            <li>
+                                <a href="{{ path('product_show', { 'id': category.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('product_edit', { 'id': category.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Isactive</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
-                <td>{{ category.name }}</td>
-                <td>{{ category.catalog.name}}</td>
-                <td>{% if category.isActive %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('category_show', { 'id': category.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('category_edit', { 'id': category.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+            {% endfor %}
+        </div>
+    </div>
     <ul>
         <li>
             <a href="{{ path('category_new') }}">Create a new category</a>

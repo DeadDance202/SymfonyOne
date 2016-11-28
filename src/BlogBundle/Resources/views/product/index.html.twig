@@ -2,36 +2,26 @@
 
 {% block body %}
 <div id="wrapper">
-    <h1>Products list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Createdat</th>
-                <th>Updatedat</th>
-                <th>Isactive</th>
-                <th>Sku</th>
-                <th>caregory</th>
-                <th>Image</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h3 class="text-center">Products list</h3>
+    <div class="container">
+        <div class="row">
         {% for product in products %}
-            <tr>
-                <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.description }}</td>
-                <td>{% if product.createdAt %}{{ product.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if product.updatedAt %}{{ product.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if product.isActive %}Yes{% else %}No{% endif %}</td>
-                <td>{{ product.sKU }}</td>
-                <td>{{ product.category.id }}</td>
-                <td><a href="" class="mask"><img class="img-responsive zoom-img" src="{{ product.image }}" width="50px"
-                                                 height="50px" alt="" /></a></td>
+            <div class="col-md-1">
+                {{ product.id }}
+            </div>
+            <div class="col-md-2">
+                {{ product.name }}
+            </div>
+            <div class="col-md-3">
+                {% if product.createdAt %}{{ product.createdAt|date('Y-m-d H:i:s') }}{% endif %}
+            </div>
+            <div class="col-md-2">
+                {% if product.updatedAt %}{{ product.updatedAt|date('Y-m-d H:i:s') }}{% endif %}
+            </div>
+            <div class="col-md-2">
+                {{ product.sKU }}
+            </div>
+            <div class="col-md-2">
                 <td>
                     <ul>
                         <li>
@@ -42,11 +32,11 @@
                         </li>
                     </ul>
                 </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </div>
 
+        {% endfor %}
+        </div>
+    </div>
     <ul>
         <li>
             <a href="{{ path('product_new') }}">Create a new product</a>
