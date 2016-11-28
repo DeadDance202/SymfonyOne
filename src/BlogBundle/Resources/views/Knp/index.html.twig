@@ -13,7 +13,18 @@
                       <h3>{{ product.name}}</h3>
 
                   </a>
+                  {% if is_granted('ROLE_MODERATOR') %}
+                      <button type="button" class="btn btn-default btnstyle">
+                          <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a></button>
+                  {% endif %}
               </div>
+
+
+
+
+
+
+
           </div>
           {% endfor %}
       </div>
