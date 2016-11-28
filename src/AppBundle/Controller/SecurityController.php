@@ -105,10 +105,10 @@ public function loginAction(Request $request)
      */
     public function restoreTokenAction($token, Request $request)
     {
-        $url = $this->_generateRecoveryInfo($user);
+
         $em = $this->getDoctrine()->getManager();
         $token = $em->getRepository('AppBundle:RestoreToken')->findToken($token);
-        $user = $token->getUsername();
+        $user = $token->getUser();
         $form = $this->createForm(UserType::class, $user);
         $form
             ->remove('username')
@@ -132,7 +132,7 @@ public function loginAction(Request $request)
             $em->flush();
             return $this->redirectToRoute('homepage');
         }
-        return $this->render('AppBundle/security/restore.html.twig', array(
+        return $this->render('security/restoreToken.html.twig', array(
             'form' => $form->createView(),
             'username' => $user->getUsername(),
         ));

@@ -24,9 +24,12 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ path('blog_homepage') }}">GuitarLand</a>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ path('blog_homepage') }}"> Home</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('admin_home') }}">Manage users</a></li>
+                    <li><a href="{{ path('blog_homepage') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     <li><a href="{{ path('catalog_index') }}"><span class="glyphicon glyphicon-book"></span> Catalog</a></li>
                     <li><a href="{{ path('category_index') }}"><span class="glyphicon glyphicon-list-alt"></span> Category</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">
@@ -77,4 +80,3 @@
 
 </body>
 </html>
-

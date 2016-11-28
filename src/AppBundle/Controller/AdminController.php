@@ -2,7 +2,8 @@
 
 namespace AppBundle\Controller;
 
-use BlogBundle\Entity\Post;
+use AppBundle\Entity\Category;
+use AppBundle\Entity\Post;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -94,7 +95,7 @@ class AdminController extends Controller
         $form = $this->createForm(UserType::class, $user)
             ->remove('email')
             ->remove('username')
-            ->remove('password')
+            ->remove('PlainPassword')
             ->add('submit', SubmitType::class);
         $form->get('roles')->setData($user->getRoles()[0]);
 
@@ -112,5 +113,24 @@ class AdminController extends Controller
             'username' => $user->getUsername(),
         ));
     }
-
+    /**
+     * @Route(path="/category", name="admin_categories_show")
+     */
+    public function categoriesShowAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $parameters = $request->query->all();
+            $repository = $this->getDoctrine()->getManager()->getRepository('BlogBundle:Category');
+            $response = $this->getAjaxData(
+                $repository,
+                $parameters,
+                Category::CATEGORIES_PER_PAGE,
+                function (&$items, $item){
+                    array_push($items, array('name' => $item->getName()));
+                }
+            );
+            return $this->json($response);
+        }
+        return $this->render('admin/ajax_category_show.html.twig');
+    }
 }
