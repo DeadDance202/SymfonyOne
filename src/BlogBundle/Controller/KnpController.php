@@ -8,8 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class KnpController extends Controller
 {
     /**
-     * @Route(path="/category/{id}", name="category")
-     *
+     * @Route(path="/{id}", name="category", requirements={"id": "\d+"})
+     * @Route("/blog/{page}", name="blog_list", requirements={"page": "\d+"})
      */
 public function indexAction($id)
     {

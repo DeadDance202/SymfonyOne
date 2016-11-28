@@ -3,10 +3,6 @@ product_index:
     defaults: { _controller: "BlogBundle:Product:index" }
     methods:  GET
 
-product_show:
-    path:     /{id}/show
-    defaults: { _controller: "BlogBundle:Product:show" }
-    methods:  GET
 
 product_new:
     path:     /new

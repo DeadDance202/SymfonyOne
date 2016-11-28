@@ -3,6 +3,7 @@
 namespace BlogBundle\Controller;
 
 use BlogBundle\Entity\Product;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -42,7 +43,7 @@ class ProductController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $product->getImage();
             $fileName = $this->get('app.imgUploader')->upload($file);
-            $product->setImage('images/product/'.$fileName);
+            $product->setImage('/images/product/'.$fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush($product);
@@ -57,7 +58,8 @@ class ProductController extends Controller
     }
 
     /**
-     * Finds and displays a product entity.
+     * @Route(path="/{id}/show", name="product_show", requirements={"id": "\d+"})
+     *
      *
      */
     public function showAction(Product $product)
