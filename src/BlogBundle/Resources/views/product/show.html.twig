@@ -53,7 +53,7 @@
                     <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a></button>
                 {% endif %}
                 <button type="button" class="btn btn-default btnstyle">
-                    <a href="{{ path('category', { 'id': product.category.id }) }}">Back to catygory</a></button>
+                    <a href="{{ path('category', { 'id': product.category.id }) }}">Back to category</a></button>
 
                 {% if is_granted('ROLE_MODERATOR') %}
                 {{ form_start(delete_form) }}

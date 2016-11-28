@@ -28,7 +28,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ path('blog_homepage') }}"> GuitarLand</a>
+                <a class="navbar-brand" href="{{ path('admin_users_show')}}"> GuitarLand</a>
                 </div>
                 <div class="collapse navbar-collapse" id="responsive-menu">
                         {% if is_granted('ROLE_USER') %}
@@ -39,8 +39,12 @@
 
 
                     <ul class="nav navbar-nav navbar-right">
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('admin_home') }}">Manage users</a></li>
+                        {% endif %}
                         {% if is_granted('ROLE_MODERATOR') %}
-                            <li><a href="{{ path('admin_home') }}">Manage users</a></li>
+
+
                         <li><a href="{{ path('category_index') }}"><span class="glyphicon glyphicon-edit"></span> Edit category</a></li>
                         <li><a href="{{ path('product_index') }}"><span class="glyphicon glyphicon-edit"></span> Edit product</a></li>
                         {% endif %}

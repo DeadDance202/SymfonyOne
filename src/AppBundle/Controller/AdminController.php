@@ -24,7 +24,7 @@ class AdminController extends Controller
      */
     public function homeAction()
     {
-        return $this->render('admin/homepage.html.twig');
+        return $this->forward('AppBundle:Admin:usersShow');
     }
 
     private function getAjaxData($repository, $parameters, $perPage, $arrayPushFunc)
