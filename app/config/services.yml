@@ -6,7 +6,7 @@ parameters:
 services:
     app.imgUploader:
             class: BlogBundle\Services\ImgUploader
-            arguments: ['%images_directory%']
+            arguments: ['%image_directory%']
 
     # ...
 

@@ -5,6 +5,7 @@ namespace BlogBundle\Controller;
 use BlogBundle\Entity\Product;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -43,7 +44,7 @@ class ProductController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $product->getImage();
             $fileName = $this->get('app.imgUploader')->upload($file);
-            $product->setImage('/images/product/'.$fileName);
+            $product->setImage($fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush($product);
@@ -78,16 +79,26 @@ class ProductController extends Controller
      */
     public function editAction(Request $request, Product $product)
     {
+        $file = $product->getImage();
+        $fileName = new File($this->getParameter('image_directory').'/'.$file);
+        $product->setImage($fileName);
+
+
         $deleteForm = $this->createDeleteForm($product);
         $editForm = $this->createForm('BlogBundle\Form\ProductType', $product);
         $editForm->remove('createdAt');
 
         $editForm->handleRequest($request);
 
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $file = $product->getImage();
-            $fileName = $this->get('app.imgUploader')->upload($file);
-            $product->setImage('images/product/'.$fileName);
+            $file=$product->getImage();
+            if($file !=null){
+                $fileName2=$this->get('app.imgUploader')->upload($file);
+                $product->setImage($fileName2);
+            }else{
+                $product->setImage($file);
+            }
             $product->setUpdatedAt(new \DateTime($timezone="Europe/Vilnius"));
             $this->getDoctrine()->getManager()->flush();
 
