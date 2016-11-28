@@ -1,0 +1,30 @@
+
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('css/styleboot.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block body %}
+<div id="wrapper">
+    <div class="site-wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                <div class="inner cover">
+                    <h1 style="font-size: 20vh;">
+                        {{ status_code }}
+                    </h1>
+                    <h2>
+                        {{ status_text }}
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
