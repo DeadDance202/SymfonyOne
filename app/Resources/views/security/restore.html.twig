@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/security/security.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6 col-md-offset-3">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 btn-group btn-group-justified">
+                                    <h1>{{ 'restore.title' | trans }}</h1>
+                                </div>
+                                <div class="col-md-12">
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
+                                {% form_theme form 'bootstrap_3_layout.html.twig' %}
+                                {{ form_start(form) }}
+                                {{ form_errors(form) }}
+                                <div class="col-md-12">
+                                    {{ username }}{{ ',  please, enter your new password: '  }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form_row(form.password.first) }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form_row(form.password.second) }}
+                                </div>
+                                <div class="col-md-12 submit">
+                                    {{ form_row(form.submit, {'attr': {'class': 'btn btn-default btn-block'}}) }}
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer class="footer"></footer>
+
+{% endblock %}

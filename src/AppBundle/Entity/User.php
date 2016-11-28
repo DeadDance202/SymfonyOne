@@ -56,7 +56,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $isActive;
 
     /**
-     * @Assert\NotBlank()
+
      * @Assert\Length(max=4096)
      */
     private $plainPassword;

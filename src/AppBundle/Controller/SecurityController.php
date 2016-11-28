@@ -64,7 +64,7 @@ public function loginAction(Request $request)
         $form
             ->remove('username')
             ->remove('plainPassword')
-            ->add('submit', SubmitType::class);
+            ->add('Send', SubmitType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $user = $form->getData();
@@ -132,7 +132,7 @@ public function loginAction(Request $request)
             $em->flush();
             return $this->redirectToRoute('homepage');
         }
-        return $this->render('security/restoreToken.html.twig', array(
+        return $this->render('security/restore.html.twig', array(
             'form' => $form->createView(),
             'username' => $user->getUsername(),
         ));
