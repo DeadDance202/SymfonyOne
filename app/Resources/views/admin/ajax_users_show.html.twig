@@ -16,8 +16,8 @@
     <script>
         $('#users').ajaxgrid({
             'dataUrl': '{{ path('admin_users_show') }}',
-            'sortableColumns': ['username'],
-            'filterableColumns': [],
+            'sortableColumns': ['username','email'],
+            'filterableColumns': ['username','email'],
             'rowsPerPage': 10,
         });
     </script>
